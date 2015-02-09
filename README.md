@@ -1,6 +1,6 @@
 # Æris
 
-__ Warning, this template is actually a _work in progress_. Please, do not use it in production !__
+__Warning, this template is actually a _work in progress_. Please, do not use it in production !__
 
 __Template for [hugo](http://gohugo.io).__
 ![æris example](./preview.png)
