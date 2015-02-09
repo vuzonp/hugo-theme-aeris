@@ -1,0 +1,6 @@
+author = "Thomas Girard"
+description = "A light, multi-device and accessible template"
+license = "MIT"
+name = "aeris"
+source_repo = "https://github.com/vuzonp/hugo-theme-aeris"
+tags = ["blog", "responsive", "WCAG AA", "1 column"]
