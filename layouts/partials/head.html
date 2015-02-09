@@ -1,0 +1,35 @@
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui" />
+        <title>{{ .Title }} &middot; {{ .Site.Title }}</title>
+        {{ if .Description }}<meta name="description" content="{{ .Description }}" />{{ end }}
+
+        {{ "<!--[if lt IE 9]>" | safeHtml }}<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>{{ "<![endif]-->" | safeHtml }}
+
+        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/assets/css/normalize.css" />
+        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/assets/css/makeup.css" />
+        <base href="{{ .Site.BaseUrl }}" />
+        <link rel="canonical" href="{{ .Permalink }}"/>
+        {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
+
+        <!-- Opengraph -->
+        <meta property="og:locale" content="{{ .Params.lang }}_{{ .Params.lang }}" />
+        <meta property="og:title" content="{{ .Title }}" />
+        <meta property="og:url" content="{{ .Permalink }}" />
+        {{ if .Description }}<meta property="og:description" content="{{ .Description }}" />{{ end }}
+        {{ if .IsPage }}
+        <meta property="og:type" content="article" />
+        <meta property="article:section" content="{{ .Section }}" />
+        <meta property="article:published_time" content="{{ .Date.Format "2006-01-02" }}" />
+        <meta property="article:modified_time" content="{{ .Date.Format "2006-01-02" }}" />
+        {{ end }}
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="{{ .Title }}" />
+        <meta name="twitter:url" content="{{ .Permalink }}" />
+        {{ if .Site.Params.twitter }}
+        <meta name="twitter:site" content="{{ .Site.Params.twitter }}" />
+        <meta name="twitter:creator" content="{{ .Site.Params.twitter }}" />
+        {{ end }}
+        {{ if .Description }}<meta name="twitter:description" content="{{ .Description }}" />{{ end }}

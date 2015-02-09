@@ -1,0 +1,16 @@
+
+    {{ if .Site.BuildDrafts }}<div class="wip" role="log" aria-label="Status du site">Prévisualisation du travail en cours</div>{{ end }}
+    {{ range .Paginator.Pages }}
+        <article class="post post-item" itemprop="hasPart" itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+                <h3 class="post-title" itemprop="title"><a href="{{ .Permalink }}" itemprop="url">{{ .Title }}</a></h3>
+                <div class="meta">Publié le <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "02/01/2006" }}</time> &middot;
+                <small>Temps de lecture estimé à <em>{{ .ReadingTime }} minute{{ if gt .ReadingTime 1 }}s{{ end }}</em></small></div>
+                {{ partial "draft.html" . }}
+            </header>
+            <div class="summary" itemprop="description">
+                <p>{{ .Summary }}</p>
+            </div>
+            {{ if .Truncated }}<div class="read-more"><a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">Lire la suite &rarr;</a></div>{{ end }}
+        </article>
+    {{ end }}

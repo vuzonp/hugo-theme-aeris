@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ .Title }} &middot; {{ .Site.Params.subtitle }}</title>
+        <meta name="description" content="{{ .Description }}">
+        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/assets/css/makeup.css">
+        <base href="{{ .Site.BaseUrl }}">
+        <link rel="canonical" href="{{ .Permalink }}">
+        {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
+
+        <!-- Opengraph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="{{ .Site.LanguageCode }}" />
+        <meta property="og:title" content="{{ .Title }}" />
+        <meta property="og:url" content="{{ .Permalink }}" />
+        <meta property="og:updated_time" content="{{ .Site.LastChange.Format "2006-01-02" }}" />
+        {{ if .Description }}<meta property="og:description" content="{{ .Description }}" />{{ end }}
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="{{ .Title }}" />
+        <meta name="twitter:url" content="{{ .Permalink }}" />
+        {{ if .Site.Params.twitter }}
+        <meta name="twitter:site" content="{{ .Site.Params.twitter }}" />
+        <meta name="twitter:creator" content="{{ .Site.Params.twitter }}" />
+        {{ end }}
+        {{ if .Description }}<meta name="twitter:description" content="{{ .Description }}" />{{ end }}
+
+    </head>
+    <body id="homepage" itemscope itemtype="http://schema.org/Blog">
+        {{ partial "accessibility.html" . }}
+        {{ partial "banner.html" . }}
+        {{ partial "menu.html" . }}
+        <main id="content" role="main">
+
+            {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
+            {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
+            <meta itemprop="dateModified" content="{{ .Site.LastChange.Format "2006-01-02" }}" />
+            <meta itemprop="headline" content="{{ .Title }}" />
+            <meta itemprop="inLanguage" content="{{ .Site.LanguageCode }}" />
+            <meta itemprop="url" content="{{ .Site.BaseUrl }}/" />
+
+            <h2 class="sr-only">Dernières publications</h2>
+            {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+            {{ partial "list-children.html" . }}
+            <nav class="pagination">
+                {{ if .Paginator.HasPrev }}
+                <div class="inline"><a href="{{ .Paginator.Prev.Url }}" aria-label="Articles plus récents" title="Articles plus récents"><span aria-visibility="hidden">&laquo;</span></a></div>
+                {{ end }}
+                <div class="inline">
+                    <a href="{{ .Site.BaseUrl }}" aria-label="Revenir à l'accueil" title="Revenir à l'accueil" itemprop="url">
+                        <svg  class="icon small icon-home" viewBox="0 0 100 100">
+                            <path d="M 0 100 L 0 50 L 50 0 L 100 50 L 100 100 L 65 100 L 65 70 L 45 70 L 45 100 Z" stroke="none" />
+                        </svg>
+                    </a>
+                </div>
+                {{ if .Paginator.HasNext }}
+                <div class="inline"><a href="{{ .Paginator.Next.Url }}" aria-label="Articles plus anciens" title="Articles plus anciens"><span aria-visibility="hidden">&raquo;</span></a></div>
+                {{ end }}
+            </nav>
+        </main>
+
+        {{ partial "fold.html" . }}
+    </body>
+</html>

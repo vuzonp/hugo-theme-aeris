@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Params.lang }}">
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+    <body id="listpage" itemscope itemtype="http://schema.org/WebPage">
+        {{ partial "banner.html" . }}
+        {{ partial "menu.html" . }}
+        <main id="content" role="main">
+            <h2 id="headline">{{ .Title }}</h2>
+            {{ partial "list-children.html" . }}
+        </main>
+        {{ partial "pagination.html" . }}
+        {{ partial "fold.html" . }}
+    </body>
+</html>

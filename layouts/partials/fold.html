@@ -1,0 +1,27 @@
+
+        <hr class="sr-only" />
+        <footer id="fold" role="contentinfo">
+            <p id="copyright">&copy;<span itemprop="copyrightYear">{{ .Now.Format "2006" }}</span> - <span itemprop="copyrightHolder">{{ .Site.Copyright }}</span></p>
+            <p>
+                <small>Site réalisé avec <a href="http://gohugo.io">Hugo</a>.
+                Template <a href="https://github.com/vuzonp/hugo-theme-aeris">æris</a>
+                créé par <a href="http://www.thomasgirard.fr">Thomas Girard</a></small>
+            </p>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/assets/js/jquery-2.1.3.min.js"><\/script>')</script>
+        <script src="/assets/js/mobile.js"></script>
+        <script type="text/javascript">
+            var _paq = _paq || [];
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+                var u="//stats.thomasgirard.fr/";
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                _paq.push(['setSiteId', 1]);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <noscript><p><img src="//stats.thomasgirard.fr/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>

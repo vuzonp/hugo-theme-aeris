@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ .Title }} &middot; 404</title>
+        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/css/makeup.css" />
+        <style>
+            img, h1 {
+                display: block;
+                text-align: center;
+            }
+            img {
+                margin: 3em auto;
+            }
+        </style>
+    </head>
+    <body>
+        {{ partial "banner.html" . }}
+        {{ partial "menu.html" . }}
+        <main id="content" role="main">
+            <h1>Désolé, mais cette page n'existe pas</h1>
+            <img src="{{ .Site.BaseUrl }}/assets/bug-404.png" alt="" />
+        </main>
+        {{ partial "fold.html" . }}
+    </body>
+</html>
