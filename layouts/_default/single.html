@@ -33,6 +33,11 @@
                     {{ .TableOfContents }}
                 </nav>
                 {{ end }}
+                {{ if .Params.picture }}
+                <figure class="post-picture">
+                    <img src="{{ .Params.picture }}"{{ if .Params.pictureHD }} srcset="{{ .Params.pictureHD }} 2x"{{ end }} alt="" />
+                </figure>
+                {{ end }}
                 <div class="page-content" itemprop="articleBody">
                     {{ .Content }}
                 </div>
