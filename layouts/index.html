@@ -5,7 +5,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ .Title }} &middot; {{ .Site.Params.subtitle }}</title>
         <meta name="description" content="{{ .Description }}">
-        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/assets/css/makeup.css">
+        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/assets/css/makeup.css" />
         <base href="{{ .Site.BaseUrl }}">
         <link rel="canonical" href="{{ .Permalink }}">
         {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}

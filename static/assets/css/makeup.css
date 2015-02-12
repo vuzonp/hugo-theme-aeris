@@ -1,24 +1,59 @@
 
 /* [0] Misc
 ------------------------------------------------------------------------------*/
+html {
+    font-size: 100%; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+}
 
 body {
 	margin: 0;
-	padding: 0;
-	font: 1.25em/1.5em Corbel, Cantarell, Calibri, Avenir, sans-serif;
-	font-family: Constantia, "Linux Libertine Display G", Cambria, Georgia, serif;
+	font: 1.25em/1.5em Constantia, "Linux Libertine Display G", Cambria, Georgia, serif;
 	overflow-y: visibility;
-	/*text-rendering: optimizeSpeed;*/
 	color: #223;
 	background: #fff;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+[hidden] {
+    display: none;
 }
 
 a {
 	text-decoration: none;
 	color: Crimson;
+	outline: 0;
 }
 
-a:hover {
+a:hover, a:focus {
 	color: Purple;
 }
 
@@ -54,10 +89,9 @@ h5, h6, p, ul, blockquote, dl, pre, img, .medium {
 	padding: 0;
 }
 
-ul, li {
-	/*list-style: none;*/
+blockquote {
+	margin-left: 3em;
 }
-
 
 ul.inline {
 	padding: 0;
@@ -67,15 +101,90 @@ ul.inline li, div.inline {
 	display: inline-block;
 }
 
-samp, pre, code {
-	font-family: Consolas, Inconsolata, "Courier New", monospace;
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+b,
+strong {
+    font-weight: bold;
+}
+
+dfn {
+    font-style: italic;
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace, serif;
+	_font-family: Consolas, Inconsolata, "courier new", monospace;
 	font-size: .8em;
 	line-height: 1.25em;
+}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+small {
+    font-size: .8em;
+}
+
+sub,
+sup {
+    font-size: .75em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
 }
 
 img {
 	max-width: 100%;
 	height: auto;
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+figure {
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .sr-only {
