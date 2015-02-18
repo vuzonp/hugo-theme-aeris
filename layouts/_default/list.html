@@ -7,8 +7,8 @@
         {{ partial "banner.html" . }}
         {{ partial "menu.html" . }}
         <main id="content" role="main">
-            <h2 id="headline">{{ .Title }}</h2>
-            {{ partial "list-children.html" . }}
+            <h2 id="headline">{{ .Title }}{{ if .Paginator.HasNext }} <var>{{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}{{ end }}</var></h2>
+            {{ partial "last-updates.html" . }}
         </main>
         {{ partial "pagination.html" . }}
         {{ partial "fold.html" . }}

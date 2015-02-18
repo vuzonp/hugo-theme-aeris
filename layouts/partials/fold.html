@@ -15,11 +15,13 @@
             _paq.push(['trackPageView']);
             _paq.push(['enableLinkTracking']);
             (function() {
-                var u="//stats.thomasgirard.fr/";
+                var u="http://stats.thomasgirard.fr/";
                 _paq.push(['setTrackerUrl', u+'piwik.php']);
                 _paq.push(['setSiteId', 1]);
                 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
                 g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+
+                console.log(g);
             })();
         </script>
-        <noscript><img src="http://stats.thomasgirard.fr/piwik.php?idsite=1" width="1" height="1" alt="" /></noscript>
+        <noscript><img src="http://stats.thomasgirard.fr/piwik.php?idsite=1" width="1" height="1" alt="Outil de statistiques" /></noscript>

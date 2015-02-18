@@ -1,14 +1,14 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui" />
-        <title>{{ .Title }} &middot; {{ .Site.Title }}</title>
+        <title>{{ .Title }} | {{ .Site.Title }}</title>
         {{ if .Description }}<meta name="description" content="{{ .Description }}" />{{ end }}
 
         {{ "<!--[if lt IE 9]>" | safeHtml }}<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>{{ "<![endif]-->" | safeHtml }}
 
         <link rel="stylesheet" href="{{ .Site.BaseUrl }}/assets/css/makeup.css" />
         <base href="{{ .Site.BaseUrl }}" />
-        <link rel="canonical" href="{{ .Permalink }}"/>
+        <link rel="canonical" href="{{ .Permalink }}" />
         {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
 
         <!-- Opengraph -->

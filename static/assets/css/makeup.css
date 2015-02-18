@@ -50,11 +50,14 @@ audio:not([controls]) {
 a {
 	text-decoration: none;
 	color: Crimson;
-	outline: 0;
 }
 
 a:hover, a:focus {
 	color: Purple;
+}
+
+a:active { /* firefox */
+    outline: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {

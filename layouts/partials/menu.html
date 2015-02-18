@@ -1,10 +1,11 @@
 <nav id="menu" role="navigation">
-	<h2 class="sr-only">Navigation</h2>
+	<h2 class="sr-only">Navigation du site</h2>
 	<ul class="inline">
 		<li><a href="{{ .Site.BaseUrl }}">Accueil</a></li>
 		<li><a href="/post/">Blog</a></li>
 		{{ range .Site.Menus.main }}
 			<li><a href="{{.Url}}"> {{ .Name }} </a></li>
 		{{end}}
+		<li itemprop="creator" itemscope itemtype="http://schema.org/Person"><a href="/resume/" itemprop="url" title="Consultez mon CV" target="_blank">CV</a></li>
 	</ul>
 </nav>
