@@ -1,7 +1,7 @@
+/* Toggle menu */
 document.addEventListener('DOMContentLoaded', function() {
 
-
-    // Selectors
+    // Init
     var s = document.createElement('span');
     s.setAttribute('aria-visibility', 'hidden');
     s.appendChild(document.createTextNode('\u00d7'));
@@ -21,5 +21,4 @@ document.addEventListener('DOMContentLoaded', function() {
             m.className = 'opened';
         }
     };
-
 });
