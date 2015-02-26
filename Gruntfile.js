@@ -20,10 +20,11 @@ module.exports = function(grunt) {
                 options: {
                     paths: ["src_static/less"],
                     plugins: [
-                        new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
-                        new (require('less-plugin-clean-css'))({})
+                        new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
                     ],
-                    banner: '/*! <%= pkg.name %> v<%= pkg.version %> | (c) <%= grunt.template.today("yyyy") %>, Thomas Girard | http://opensource.org/licenses/MIT */\n'
+                    banner: '/*! <%= pkg.name %> v<%= pkg.version %> | (c) <%= grunt.template.today("yyyy") %>, Thomas Girard | http://opensource.org/licenses/MIT */\n',
+                    cleancss: true,
+                    compress: true,
                 },
                 files: {
                     "static/css/aeris.min.css": "src_static/less/makeup.less"
