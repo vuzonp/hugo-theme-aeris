@@ -5,7 +5,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ .Title }} &middot; {{ .Site.Params.subtitle }} | Page d'accueil</title>
         <meta name="description" content="{{ .Site.Params.Description }}">
-        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/assets/css/makeup.css" />
+        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/css/aeris.min.css" />
         <base href="{{ .Site.BaseUrl }}">
         <link rel="canonical" href="{{ .Permalink }}">
         {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
@@ -28,42 +28,65 @@
         {{ end }}
         {{ if .Description }}<meta name="twitter:description" content="{{ .Description }}" />{{ end }}
 
+        {{ "<!--[if lt IE 9]>" | safeHtml }}<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>{{ "<![endif]-->" | safeHtml }}
+
     </head>
     <body id="homepage" itemscope itemtype="http://schema.org/Blog">
-        {{ partial "accessibility.html" . }}
-        {{ partial "banner.html" . }}
-        {{ partial "menu.html" . }}
-        <main id="content" role="main">
 
-            {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
-            {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
-            <meta itemprop="dateModified" content="{{ .Site.LastChange.Format "2006-01-02" }}" />
-            <meta itemprop="headline" content="{{ .Title }}" />
-            <meta itemprop="inLanguage" content="{{ .Site.LanguageCode }}" />
-            <meta itemprop="url" content="{{ .Site.BaseUrl }}/" />
+        <!-- Navbar -->
+        {{ partial "navbar.html" . }}
 
-            <div id="last-updates">
-                {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
-                <h2 class="sr-only">Dernières publications <var>{{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}</var></h2>
-                {{ partial "last-updates.html" . }}
-                <nav class="pagination">
-                    {{ if .Paginator.HasPrev }}
-                    <div class="inline"><a href="{{ .Paginator.Prev.Url }}" aria-label="Articles plus récents" title="Articles plus récents"><span aria-visibility="hidden">&laquo;</span></a></div>
-                    {{ end }}
-                    <div class="inline">
-                        <a href="{{ .Site.BaseUrl }}" aria-label="Revenir à l'accueil" title="Revenir à l'accueil" itemprop="url">
-                            <svg  class="icon small icon-home" viewBox="0 0 100 100">
-                                <path d="M 0 100 L 0 50 L 50 0 L 100 50 L 100 100 L 65 100 L 65 70 L 45 70 L 45 100 Z" stroke="none" />
-                            </svg>
-                        </a>
+        <!-- Structure -->
+        <div id="main-wrapper">
+            <div id="row-wrapper">
+                <!-- Menu -->
+                {{ partial "menu.html" . }}
+
+                <div id="sheet" class="column">
+                    <header id="banner">
+                        <div class="headline">
+                            <h1>Vuzonp</h1>
+                            <h2 class="huge">Thomas Girard</h2>
+                        </div>
+                    </header>
+                    <div id="content-wrapper">
+                        <main id="content" class="section" role="main">
+
+                            {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
+                            {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
+                            <meta itemprop="dateModified" content="{{ .Site.LastChange.Format "2006-01-02" }}" />
+                            <meta itemprop="headline" content="{{ .Title }}" />
+                            <meta itemprop="inLanguage" content="{{ .Site.LanguageCode }}" />
+                            <meta itemprop="url" content="{{ .Site.BaseUrl }}/" />
+
+                            <div id="last-updates">
+                                {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+                                <h2 class="sr-only">Dernières publications <var>{{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}</var></h2>
+                                {{ partial "last-updates.html" . }}
+                                <nav class="pagination">
+                                    {{ if .Paginator.HasPrev }}
+                                    <div class="inline"><a href="{{ .Paginator.Prev.Url }}" aria-label="Articles plus récents" title="Articles plus récents"><span aria-visibility="hidden">&laquo;</span></a></div>
+                                    {{ end }}
+                                    <div class="inline">
+                                        <a href="{{ .Site.BaseUrl }}" aria-label="Revenir à l'accueil" title="Revenir à l'accueil" itemprop="url">
+                                            <svg  class="icon small icon-home" viewBox="0 0 100 100">
+                                                <path d="M 0 100 L 0 50 L 50 0 L 100 50 L 100 100 L 65 100 L 65 70 L 45 70 L 45 100 Z" stroke="none" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    {{ if .Paginator.HasNext }}
+                                    <div class="inline"><a href="{{ .Paginator.Next.Url }}" aria-label="Articles plus anciens" title="Articles plus anciens"><span aria-visibility="hidden">&raquo;</span></a></div>
+                                    {{ end }}
+                                </nav>
+                            </div>
+                        </main>
+
+                        {{ partial "footer.html" . }}
+
                     </div>
-                    {{ if .Paginator.HasNext }}
-                    <div class="inline"><a href="{{ .Paginator.Next.Url }}" aria-label="Articles plus anciens" title="Articles plus anciens"><span aria-visibility="hidden">&raquo;</span></a></div>
-                    {{ end }}
-                </nav>
+                </div>
             </div>
-        </main>
+        </div>
 
-        {{ partial "fold.html" . }}
     </body>
 </html>

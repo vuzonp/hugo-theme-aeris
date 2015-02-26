@@ -2,43 +2,52 @@
 <html lang="{{ .Site.Params.lang }}">
     <head>
         {{ partial "head.html" . }}
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/rainbow.min.css" />
     </head>
     <body id="singlepage" role="document" itemscope itemtype="http://schema.org/Article">
-        {{ partial "accessibility.html" . }}
-        {{ partial "banner.html" . }}
-        {{ partial "menu.html" . }}
-        <main role="main">
-            <article id="content"  role="article"{{ if .Params.lang }} lang="{{ .Params.lang }}"{{ end }}>
-                <header>
-                    <h1 id="headline" itemprop="headline">{{ .Title }}</h1>
 
-                    {{ partial "draft.html" . }}
-                    <!-- microdata -->
-                    <meta itemprop="url" content="{{ .Permalink }}" />
-                    <meta itemprop="wordCount" content="{{ .WordCount }}" />
-                    <meta itemprop="timeRequired" content="P{{ .ReadingTime }}M" />
-                    {{ if .Description }}<meta itemprop="description" content="{{ .Description }}" />{{ end }}
-                    {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
-                    {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
-                    {{ if .Params.lang }}<meta itemprop="inLanguage" content="{{ .Params.lang }}" />{{ end }}
+        <!-- Navbar -->
+        {{ partial "navbar.html" . }}
 
-                </header>
-                {{ if .Params.notoc }}
-                <nav id="toc">
-                    {{ .TableOfContents }}
-                </nav>
-                {{ end }}
-                {{ if .Params.picture }}
-                <figure class="post-picture">
-                    <img src="{{ .Params.picture }}"{{ if .Params.pictureHD }} srcset="{{ .Params.pictureHD }} 2x"{{ end }} alt="" />
-                </figure>
-                {{ end }}
-                <div class="page-content" itemprop="articleBody">
-                    {{ .Content }}
+        <div id="main-wrapper">
+            <div id="row-wrapper">
+                <!-- Menu -->
+                {{ partial "menu.html" . }}
+
+                <div id="content-wrapper">
+                    <main role="main">
+                        <article id="content"  role="article"{{ if .Params.lang }} lang="{{ .Params.lang }}"{{ end }}>
+                            <header>
+                                <h1 id="headline" itemprop="headline">{{ .Title }}</h1>
+
+                                {{ partial "draft.html" . }}
+                                <!-- microdata -->
+                                <meta itemprop="url" content="{{ .Permalink }}" />
+                                <meta itemprop="wordCount" content="{{ .WordCount }}" />
+                                <meta itemprop="timeRequired" content="P{{ .ReadingTime }}M" />
+                                {{ if .Description }}<meta itemprop="description" content="{{ .Description }}" />{{ end }}
+                                {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
+                                {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
+                                {{ if .Params.lang }}<meta itemprop="inLanguage" content="{{ .Params.lang }}" />{{ end }}
+
+                            </header>
+                            {{ if .Params.notoc }}
+                            <nav id="toc">
+                                {{ .TableOfContents }}
+                            </nav>
+                            {{ end }}
+                            {{ if .Params.picture }}
+                            <figure class="post-picture">
+                                <img src="{{ .Params.picture }}"{{ if .Params.pictureHD }} srcset="{{ .Params.pictureHD }} 2x"{{ end }} alt="" />
+                            </figure>
+                            {{ end }}
+                            <div class="page-content" itemprop="articleBody">
+                                {{ .Content }}
+                            </div>
+                        </article>
+                    </main>
+                    {{ partial "footer.html" . }}
                 </div>
-            </article>
-        </main>
-        {{ partial "fold.html" . }}
+            </div>
+        </div>
     </body>
 </html>

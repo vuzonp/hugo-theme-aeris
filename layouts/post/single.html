@@ -2,61 +2,69 @@
 <html lang="{{ .Site.Params.lang }}">
     <head>
         {{ partial "head.html" . }}
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/rainbow.min.css" />
     </head>
     <body id="singlepage" role="document" itemscope itemtype="http://schema.org/BlogPosting">
-        {{ partial "accessibility.html" . }}
-        {{ partial "banner.html" . }}
-        {{ partial "menu.html" . }}
-        <main role="main">
-            <article id="content"  role="article"{{ if .Params.lang }} lang="{{ .Params.lang }}"{{ end }}>
-                <header>
-                    <h1 id="headline" itemprop="headline">{{ .Title }}</h1>
-                    <div class="meta">
-                        <small>Publié dans :
-                                <a href="{{ .Site.BaseUrl }}/{{ .Section }}/">&sect;&nbsp;{{ .Section }}</a>
-                            &middot; le <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time></small>
-                    </div>
-                    {{ partial "draft.html" . }}
-                    <!-- microdata -->
-                    <meta itemprop="url" content="{{ .Permalink }}" />
-                    <meta itemprop="wordCount" content="{{ .WordCount }}" />
-                    <meta itemprop="timeRequired" content="P{{ .ReadingTime }}M" />
-                    {{ if .Description }}<meta itemprop="description" content="{{ .Description }}" />{{ end }}
-                    {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
-                    {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
-                    {{ if .Params.lang }}<meta itemprop="inLanguage" content="{{ .Params.lang }}" />{{ end }}
 
-                </header>
-                {{ if .Params.notoc }}
-                <nav id="toc">
-                    {{ .TableOfContents }}
-                </nav>
-                {{ end }}
-                {{ if .Params.picture }}
-                <figure class="post-picture">
-                    <img src="{{ .Params.picture }}"{{ if .Params.pictureHD }} srcset="{{ .Params.pictureHD }} 2x"{{ end }} alt="" />
-                </figure>
-                {{ end }}
-                <div class="page-content" itemprop="articleBody">
-                    {{ .Content }}
+        <!-- Navbar -->
+        {{ partial "navbar.html" . }}
+
+        <div id="main-wrapper">
+            <div id="row-wrapper">
+                <!-- Menu -->
+                {{ partial "menu.html" . }}
+
+                <div id="content-wrapper">
+                    <main role="main">
+                        <article id="content"  role="article"{{ if .Params.lang }} lang="{{ .Params.lang }}"{{ end }}>
+                            <header>
+                                <h1 id="headline" itemprop="headline">{{ .Title }}</h1>
+                                <div class="meta">
+                                    <small>Publié dans :
+                                            <a href="{{ .Site.BaseUrl }}/{{ .Section }}/">&sect;&nbsp;{{ .Section }}</a>
+                                        &middot; le <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time></small>
+                                </div>
+                                {{ partial "draft.html" . }}
+                                <!-- microdata -->
+                                <meta itemprop="url" content="{{ .Permalink }}" />
+                                <meta itemprop="wordCount" content="{{ .WordCount }}" />
+                                <meta itemprop="timeRequired" content="P{{ .ReadingTime }}M" />
+                                {{ if .Description }}<meta itemprop="description" content="{{ .Description }}" />{{ end }}
+                                {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
+                                {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
+                                {{ if .Params.lang }}<meta itemprop="inLanguage" content="{{ .Params.lang }}" />{{ end }}
+
+                            </header>
+                            {{ if .Params.notoc }}
+                            <nav id="toc">
+                                {{ .TableOfContents }}
+                            </nav>
+                            {{ end }}
+                            {{ if .Params.picture }}
+                            <figure class="post-picture">
+                                <img src="{{ .Params.picture }}"{{ if .Params.pictureHD }} srcset="{{ .Params.pictureHD }} 2x"{{ end }} alt="" />
+                            </figure>
+                            {{ end }}
+                            <div class="page-content" itemprop="articleBody">
+                                {{ .Content }}
+                            </div>
+                        </article>
+                        <nav class="pagination">
+                            {{ if .PrevInSection }}
+                            <div class="inline"><a href="{{ .PrevInSection.Permalink }}" title="Précédent : {{ .PrevInSection.LinkTitle }}" aria-label="Article Précédent"><span aria-visibility="hidden">&laquo;</span></a></div>
+                            {{ end }}
+                            <div class="inline">
+                                <a href="{{ .Site.BaseUrl }}/{{ .Section }}/" title="Catégorie : {{ .Section }}"><span aria-visibility="hidden" aria-label="Remonter dans la catégorie parent">&sect;</span></a>
+                            </div>
+                            {{ if .NextInSection }}
+                            <div class="inline"><a href="{{ .NextInSection.Permalink }}" title="Suivant : {{ .NextInSection.LinkTitle }}" aria-label="Article Suivant"><span aria-visibility="hidden">&raquo;</span></a></div>
+                            {{ end }}
+                        </nav>
+                    </main>
+                    {{ partial "footer.html" . }}
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+                    <script>hljs.initHighlightingOnLoad();</script>
                 </div>
-            </article>
-        </main>
-        <nav class="pagination">
-            {{ if .PrevInSection }}
-            <div class="inline"><a href="{{ .PrevInSection.Permalink }}" title="Précédent : {{ .PrevInSection.LinkTitle }}" aria-label="Article Précédent"><span aria-visibility="hidden">&laquo;</span></a></div>
-            {{ end }}
-            <div class="inline">
-                <a href="{{ .Site.BaseUrl }}/{{ .Section }}/" title="Catégorie : {{ .Section }}"><span aria-visibility="hidden" aria-label="Remonter dans la catégorie parent">&sect;</span></a>
             </div>
-            {{ if .NextInSection }}
-            <div class="inline"><a href="{{ .NextInSection.Permalink }}" title="Suivant : {{ .NextInSection.LinkTitle }}" aria-label="Article Suivant"><span aria-visibility="hidden">&raquo;</span></a></div>
-            {{ end }}
-        </nav>
-        {{ partial "fold.html" . }}
-
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
+        </div>
     </body>
 </html>

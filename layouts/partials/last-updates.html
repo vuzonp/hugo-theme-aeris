@@ -3,10 +3,10 @@
     {{ range .Paginator.Pages }}
         <article class="post post-item" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
             <header>
-                <h3 class="post-title" itemprop="name"><a href="{{ .Permalink }}" itemprop="url"{{ if .Params.lang }} hreflang="{{ .Params.lang }}"{{ end }}>{{ .Title }}</a></h3>
+                <h3 class="post-title x-large" itemprop="name"><a href="{{ .Permalink }}" itemprop="url"{{ if .Params.lang }} hreflang="{{ .Params.lang }}"{{ end }}>{{ .Title }}</a></h3>
                 <div class="meta">Publié le <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "02/01/2006" }}</time> &middot;
                 <small>Temps de lecture estimé à <em>{{ .ReadingTime }} minute{{ if gt .ReadingTime 1 }}s{{ end }}</em></small></div>
-                {{ partial "draft.html" . }}
+                {{ if .Draft }}<div class="wip" role="log" aria-label="Étape de travail">en cours de rédaction…</div>{{end}}
             </header>
             {{ if .Params.picture }}
             <figure class="post-picture">
