@@ -15,15 +15,18 @@ module.exports = function(grunt) {
                 }
             }
         },
-        stylus: {
-            compile: {
+        less: {
+            default: {
                 options: {
-                    paths: ['src_static/stylus'],
-                    urlfunc: 'embedurl', // use embedurl('test.png') in our code to trigger Data URI
+                    paths: ["src_static/less"],
+                    plugins: [
+                        new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
+                        new (require('less-plugin-clean-css'))({})
+                    ],
                     banner: '/*! <%= pkg.name %> v<%= pkg.version %> | (c) <%= grunt.template.today("yyyy") %>, Thomas Girard | http://opensource.org/licenses/MIT */\n'
                 },
                 files: {
-                    'static/css/aeris.min.css': 'src_static/stylus/makeup.styl'
+                    "static/css/aeris.min.css": "src_static/less/makeup.less"
                 }
             }
         }
@@ -31,9 +34,9 @@ module.exports = function(grunt) {
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-stylus');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'stylus']);
+    grunt.registerTask('default', ['uglify', 'less']);
 
 };
