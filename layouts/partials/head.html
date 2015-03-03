@@ -9,7 +9,7 @@
         {{ "<!--[if lt IE 9]>" | safeHtml }}<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>{{ "<![endif]-->" | safeHtml }}
         {{ $burl := (print .Site.BaseUrl) }}
         {{ if in $burl "localhost"}}<link rel="stylesheet" href="http://0.0.0.0:8080/css/aeris.min.css" />
-        {{ else }}<link rel="stylesheet" href="http://vuzonp.github.io/aeris-static/dist/css/aeris.min.css" />{{ end }}
+        {{ else }}<link rel="stylesheet" href="https://vuzonp.github.io/aeris-static/dist/css/aeris.min.css" />{{ end }}
         <link rel="stylesheet" href="{{ .Site.BaseUrl }}css/custom.css" />
 
         <base href="{{ $burl }}" />
