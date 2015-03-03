@@ -1,28 +1,34 @@
-
+<!DOCTYPE html>
+<html lang="{{lower $.Site.LanguageCode }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+    <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui" />
-        <title>{{ .Title }} | {{ .Site.Title }}</title>
-        {{ if .Description }}<meta name="description" content="{{ .Description }}" />{{ end }}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {{ if eq .Url "/" }}<title>{{title .Site.Title }} &middot; {{title .Site.Params.subtitle }} | Homepage</title>
+        {{ else }}<title>{{title .Title }} | {{title .Site.Title }}</title>{{ end }}
 
         {{ "<!--[if lt IE 9]>" | safeHtml }}<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>{{ "<![endif]-->" | safeHtml }}
+        {{ $burl := (print .Site.BaseUrl) }}
+        {{ if in $burl "localhost"}}<link rel="stylesheet" href="http://0.0.0.0:8080/css/aeris.min.css" />
+        {{ else }}<link rel="stylesheet" href="http://vuzonp.github.io/aeris-static/dist/css/aeris.min.css" />{{ end }}
+        <link rel="stylesheet" href="{{ .Site.BaseUrl }}css/custom.css" />
 
-        <link rel="stylesheet" href="{{ .Site.BaseUrl }}/css/aeris.min.css" />
-        <base href="{{ .Site.BaseUrl }}" />
-        <link rel="canonical" href="{{ .Permalink }}" />
+        <base href="{{ $burl }}" />
+        <link rel="canonical" href="{{ .Permalink }}">
         {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
 
         <!-- Opengraph -->
-        <meta property="og:locale" content="{{ .Params.lang }}_{{ .Params.lang }}" />
+        {{ $lang := upper (replace $.Site.LanguageCode "-" "_") }}
+        {{ if eq .Url "/" }}<meta property="og:type" content="website" />{{ end }}
+        <meta property="og:locale" content="{{ if .Params.lang }}{{ .Params.lang }}_{{ .Params.lang }}{{ else }}{{ upper (replace $.Site.LanguageCode "-" "_") }}{{ end }}" />
         <meta property="og:title" content="{{ .Title }}" />
+        <meta property="og:site_name" content="{{ .Site.Title }}" />
         <meta property="og:url" content="{{ .Permalink }}" />
-        {{ if .Description }}<meta property="og:description" content="{{ .Description }}" />{{ end }}
         {{ if .IsPage }}
         <meta property="og:type" content="article" />
         <meta property="article:section" content="{{ .Section }}" />
         <meta property="article:published_time" content="{{ .Date.Format "2006-01-02" }}" />
         <meta property="article:modified_time" content="{{ .Date.Format "2006-01-02" }}" />
         {{ end }}
-
         <!-- Twitter -->
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="{{ .Title }}" />
@@ -31,4 +37,9 @@
         <meta name="twitter:site" content="{{ .Site.Params.twitter }}" />
         <meta name="twitter:creator" content="{{ .Site.Params.twitter }}" />
         {{ end }}
-        {{ if .Description }}<meta name="twitter:description" content="{{ .Description }}" />{{ end }}
+        {{ if .Description }}
+        <meta name="description" content="{{ .Description }}" />
+        <meta property="og:description" content="{{ .Description }}" />
+        <meta name="twitter:description" content="{{ .Description }}" />
+        {{ end }}
+    </head>

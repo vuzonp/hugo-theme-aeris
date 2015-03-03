@@ -1,0 +1,19 @@
+        <!-- Structure -->
+        <div id="main-wrapper">
+            <div id="row-wrapper">
+                <!-- Menu -->
+                {{ partial "main-menu.html" . }}
+
+                <div id="sheet" class="column">
+
+                    <!-- Banner -->
+                    <header id="banner" role="banner">
+                        <div class="headline">
+                            <h1 id="sitename" aria-label="Nom du site"><a href="{{ .Site.BaseUrl }}" tabindex="2" accesskey="1">Vuzonp</a></h1>
+                            <h2 class="huge">Thomas Girard</h2>
+                        </div>
+                    </header>
+                    <hr class="sr-only" />
+
+                    <div id="content-wrapper">
+                        <main id="content" class="section" role="main">

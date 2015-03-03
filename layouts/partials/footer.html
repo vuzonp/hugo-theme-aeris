@@ -1,10 +1,32 @@
 
-        <hr class="sr-only" />
-        <footer id="fold" role="contentinfo">
-            <p id="copyright">&copy;<span itemprop="copyrightYear">{{ .Now.Format "2006" }}</span> - <span itemprop="copyrightHolder">{{ .Site.Copyright }}</span></p>
-            <p>
-                <small>Site réalisé avec <a href="http://gohugo.io">Hugo</a>.
-                Template <a href="https://github.com/vuzonp/hugo-theme-aeris">æris</a>
-                créé par <a href="http://www.thomasgirard.fr">Thomas Girard</a></small>
-            </p>
-        </footer>
+                    </main>
+                    <hr class="sr-only" />
+
+                    <!-- Footer menu -->
+                    <nav id="footer-menu">
+                        <h2 class="sr-only">Navigation de pied de page</h2>
+                        <ul>
+                            {{ range .Site.Menus.footer }}
+                                <li><a href="{{.Url}}"> {{ .Name }} </a></li>
+                            {{end}}
+                        </ul>
+                    </nav>
+
+                    <footer id="fold" role="contentinfo">
+                        <p id="copyright">&copy;<span itemprop="copyrightYear">{{ .Now.Format "2006" }}</span> - <span itemprop="copyrightHolder">{{ .Site.Copyright }}</span></p>
+                        <p>
+                            <small>Site réalisé avec <a href="http://gohugo.io">Hugo</a>.
+                            Template <a href="https://github.com/vuzonp/hugo-theme-aeris">æris</a>
+                            créé par <a href="http://www.thomasgirard.fr">Thomas Girard</a></small>
+                        </p>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ $burl := (print .Site.BaseUrl) }}
+    {{ if in $burl "localhost"}}<script src="http://0.0.0.0:8080/js/aeris.min.js"></script>{{ else }}
+    <script src="http://vuzonp.github.io/aeris-static/dist/js/aeris.min.js"></script>{{ end }}
+    <script>Æ.menu.init();</script>
