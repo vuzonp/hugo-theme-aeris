@@ -26,16 +26,16 @@
                     </a>
                 </li>
                 <li id="goto-content" class="sr-only">
-                    <a href="#content" title="Aller au contenu principal [2]" tabindex="1" accesskey="2">Aller au contenu</a>
+                    <a href="#content" title="{{ $.Site.Data.locale.skipContent }} [2]" tabindex="1" accesskey="2">{{ $.Site.Data.locale.skipContent }}</a>
                 </li>
-                <li class="sitename" aria-label="Nom du site" tabindex="2" accesskey="1">
+                <li class="sitename" aria-label="{{ $.Site.Data.locale.sitename }}" tabindex="2" accesskey="1">
                     <a href="{{ .Site.BaseUrl }}">
-                        <strong>Vuzonp</strong>
+                        <strong>{{title .Site.Title }}</strong>
                     </a>
                 </li>
                 <li class="sr-only">
-                    <a href="https://github.com/vuzonp/hugo-theme-aeris/issues" title="Signaler un problème [0]" accesskey="0">
-                        Contact technique
+                    <a href="https://github.com/vuzonp/hugo-theme-aeris/issues" title="{{ $.Site.Data.locale.issue }} [0]" accesskey="0">
+                        {{ $.Site.Data.locale.issue }}
                     </a>
                 </li>
                 <li>

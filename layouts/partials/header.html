@@ -9,8 +9,8 @@
                     <!-- Banner -->
                     <header id="banner" role="banner">
                         <div class="headline">
-                            <h1 id="sitename" aria-label="Nom du site"><a href="{{ .Site.BaseUrl }}" tabindex="2" accesskey="1">Vuzonp</a></h1>
-                            <h2 class="huge">Thomas Girard</h2>
+                            <h1 id="sitename" aria-label="{{ $.Site.Data.locale.sitename }}"><a href="{{ .Site.BaseUrl }}" tabindex="2" accesskey="1">{{title .Site.Title }}</a></h1>
+                            {{ if .Site.Params.subtitle }}<h2 class="huge">{{title .Site.Params.subtitle }}</h2>{{ end }}
                         </div>
                     </header>
                     <hr class="sr-only" />

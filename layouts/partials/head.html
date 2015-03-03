@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {{ if eq .Url "/" }}<title>{{title .Site.Title }} &middot; {{title .Site.Params.subtitle }} | Homepage</title>
+        {{ if eq .Url "/" }}<title>{{title .Site.Title }}{{ if .Site.Params.subtitle }} &middot; {{title .Site.Params.subtitle }}{{ end }} | {{ $.Site.Data.locale.home }}</title>
         {{ else }}<title>{{title .Title }} | {{title .Site.Title }}</title>{{ end }}
 
         {{ "<!--[if lt IE 9]>" | safeHtml }}<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>{{ "<![endif]-->" | safeHtml }}
@@ -14,7 +14,7 @@
 
         <base href="{{ $burl }}" />
         <link rel="canonical" href="{{ .Permalink }}">
-        {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
+        {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="RSS: {{ .Title }}" />{{ end }}
 
         <!-- Opengraph -->
         {{ $lang := upper (replace $.Site.LanguageCode "-" "_") }}

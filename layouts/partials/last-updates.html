@@ -1,12 +1,13 @@
 
-    {{ if .Site.BuildDrafts }}<div class="wip" role="log" aria-label="Status du site">Prévisualisation du travail en cours</div>{{ end }}
+    {{ if .Site.BuildDrafts }}<div class="wip" role="log" aria-label="Status du site">{{title $.Site.Data.locale.previewDrafts }}</div>{{ end }}
     {{ range .Paginator.Pages }}
         <article class="post post-item" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
             <header>
-                <h3 class="post-title x-large" itemprop="name"><a href="{{ .Permalink }}" itemprop="url"{{ if .Params.lang }} hreflang="{{ .Params.lang }}"{{ end }}>{{ .Title }}</a></h3>
-                <div class="meta">Publié le <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format "02/01/2006" }}</time> &middot;
-                <small>Temps de lecture estimé à <em>{{ .ReadingTime }} minute{{ if gt .ReadingTime 1 }}s{{ end }}</em></small></div>
-                {{ if .Draft }}<div class="wip" role="log" aria-label="Étape de travail">en cours de rédaction…</div>{{end}}
+                <h3 class="post-title x-large" itemprop="name">
+                    <a href="{{ .Permalink }}" itemprop="url"{{ if .Params.lang }} hreflang="{{ .Params.lang }}"{{ end }}>{{ .Title }}{{ if .Draft }} <small class="draft">draft</small>{{ end }}</a>
+                </h3>
+                <div class="meta">{{ $.Site.Data.locale.published }} <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format $.Site.Data.locale.dateFormat }}</time> &middot;
+                <small>{{ .Date.Format $.Site.Data.locale.readingTime }}: <em>{{ .ReadingTime }}&nbsp;minute{{ if gt .ReadingTime 1 }}s{{ end }}</em></small></div>
             </header>
             {{ if .Params.picture }}
             <figure class="post-picture">
@@ -16,6 +17,6 @@
             <div class="summary" itemprop="description">
                 <p>{{ .Summary }}</p>
             </div>
-            {{ if .Truncated }}<div class="read-more"><a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">Lire la suite &rarr;</a></div>{{ end }}
+            {{ if .Truncated }}<div class="read-more"><a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ .Date.Format $.Site.Data.locale.readmore }} &rarr;</a></div>{{ end }}
         </article>
     {{ end }}

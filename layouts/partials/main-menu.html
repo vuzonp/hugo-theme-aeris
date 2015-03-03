@@ -1,6 +1,6 @@
 
                 <nav id="menu" class="column" role="navigation">
-                    <h2 class="sr-only">Navigation du site</h2>
+                    <h2 class="sr-only">{{title $.Site.Data.locale.primaryNavigation }}</h2>
                     <ul class="sidebar-menu">
                     	<!-- <li><a href="/post/">Blog</a></li> -->
                         {{ range .Site.Menus.main }}
