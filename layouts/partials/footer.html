@@ -26,4 +26,4 @@
     {{ $burl := (print .Site.BaseUrl) }}
     {{ if in $burl "localhost"}}<script src="http://0.0.0.0:8080/js/aeris.min.js"></script>{{ else }}
     <script src="https://vuzonp.github.io/aeris-static/dist/js/aeris.min.js"></script>{{ end }}
-    <script>Æ.menu.init();</script>
+    <script>Æ.setup();</script>
