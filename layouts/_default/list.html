@@ -1,38 +1,26 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.Params.lang }}">
-    <head>
-        {{ partial "head.html" . }}
-    </head>
+{{ partial "head.html" . }}
     <body id="listpage" itemscope itemtype="http://schema.org/WebPage">
 
         <!-- Navbar -->
         {{ partial "navbar.html" . }}
+        {{ partial "header-minimal.html" . }}
+
+        {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
+        {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
+        <meta itemprop="dateModified" content="{{ .Site.LastChange.Format "2006-01-02" }}" />
+        <meta itemprop="headline" content="{{ .Title }}" />
+        <meta itemprop="inLanguage" content="{{ .Site.LanguageCode }}" />
+        <meta itemprop="url" content="{{ .Site.BaseUrl }}/" />
+
 
         <!-- Structure -->
-        <div id="main-wrapper">
-            <div id="row-wrapper">
-                <!-- Menu -->
-                {{ partial "menu.html" . }}
+        <div id="last-updates">
+            <h2 id="headline">{{ .Title }}{{ if .Paginator.HasNext }} <var>{{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}{{ end }}</var></h2>
+            {{ partial "last-updates.html" . }}
 
-                <div id="content-wrapper">
-                    <main id="content" class="section" role="main">
-
-                        {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
-                        {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
-                        <meta itemprop="dateModified" content="{{ .Site.LastChange.Format "2006-01-02" }}" />
-                        <meta itemprop="headline" content="{{ .Title }}" />
-                        <meta itemprop="inLanguage" content="{{ .Site.LanguageCode }}" />
-                        <meta itemprop="url" content="{{ .Site.BaseUrl }}/" />
-
-                        <div id="last-updates">
-                            <h2 id="headline">{{ .Title }}{{ if .Paginator.HasNext }} <var>{{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}{{ end }}</var></h2>
-                            {{ partial "last-updates.html" . }}
-                        </div>
-                    </main>
-                    {{ partial "pagination.html" . }}
-                    {{ partial "footer.html" . }}
-                </div>
-            </div>
+            {{ partial "pagination.html" . }}
         </div>
+
+        {{ partial "footer.html" . }}
     </body>
 </html>

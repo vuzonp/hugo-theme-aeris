@@ -1,19 +1,15 @@
-        <!-- Structure -->
-        <div id="main-wrapper">
-            <div id="row-wrapper">
-                <!-- Menu -->
-                {{ partial "main-menu.html" . }}
-
-                <div id="sheet" class="column">
 
                     <!-- Banner -->
                     <header id="banner" role="banner">
                         <div class="headline">
-                            <h1 id="sitename" aria-label="{{ $.Site.Data.locale.sitename }}"><a href="{{ .Site.BaseUrl }}" tabindex="2" accesskey="1">{{title .Site.Title }}</a></h1>
+
+                            <object data="/media/banner-shrew.svg" type="image/svg+xml" width="400" heigh="400">
+                                <embed src="/media/banner-shrew.svg" type="image/svg+xml" width="400" height="400" pluginspage="http://www.adobe.com/svg/viewer/install/" />
+                            </object>
+                            <h1 id="sitename" aria-label="{{ $.Site.Data.locale.sitename }}">{{title .Site.Title }}</h1>
                             {{ if .Site.Params.subtitle }}<h2 class="huge">{{title .Site.Params.subtitle }}</h2>{{ end }}
                         </div>
                     </header>
                     <hr class="sr-only" />
 
-                    <div id="content-wrapper">
-                        <main id="content" class="section" role="main">
+                    {{ partial "header-minimal.html" . }}

@@ -11,6 +11,7 @@
         {{ if in $burl "localhost"}}<link rel="stylesheet" href="http://0.0.0.0:8080/css/aeris.min.css" />
         {{ else }}<link rel="stylesheet" href="https://vuzonp.github.io/aeris-static/dist/css/aeris.min.css" />{{ end }}
         <link rel="stylesheet" href="{{ .Site.BaseUrl }}css/custom.css" />
+        <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,900italic,900,700italic' rel='stylesheet' type='text/css'>
 
         <base href="{{ $burl }}" />
         <link rel="canonical" href="{{ .Permalink }}">
@@ -18,7 +19,8 @@
 
         <!-- Opengraph -->
         {{ $lang := upper (replace $.Site.LanguageCode "-" "_") }}
-        {{ if eq .Url "/" }}<meta property="og:type" content="website" />{{ end }}
+        {{ if eq .Url "/" }}<meta property="og:type" content="website" />
+        <meta property="og:image" content="{{ .Site.BaseUrl }}/media/og-facebook.jpg" />{{ end }}
         <meta property="og:locale" content="{{ if .Params.lang }}{{ .Params.lang }}_{{ .Params.lang }}{{ else }}{{ upper (replace $.Site.LanguageCode "-" "_") }}{{ end }}" />
         <meta property="og:title" content="{{ .Title }}" />
         <meta property="og:site_name" content="{{ .Site.Title }}" />

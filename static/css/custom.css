@@ -1,0 +1,40 @@
+#banner {
+
+    /*-webkit-animation: welcome 8s linear 0s;
+    -moz-animation: welcome 8s linear 0s;
+    -ms-animation: welcome 8s linear 0s;
+    -o-animation: welcome 8s linear 0s;
+    animation: welcome 8s linear 0s;*/
+
+    transform: rotate3d(0, 0, 0, 360deg);
+    /*background-image: url(/media/banner.jpg);*/
+}
+
+#banner object {
+    transform: rotate3d(0, 0, 0, 360deg);
+}
+
+/*----------------------------------------------------------------------------*/
+
+/*
+@-webkit-keyframes welcome{
+    from { background: #50947a;}
+    50% { background: #023F5B; }
+    to { background: #343D43; }
+}
+@-moz-keyframes welcome{
+    from { background: #50947a;}
+    50% { background: #023F5B; }
+    to { background: #343D43; }
+}
+@-ms-keyframes welcome{
+    from { background: #50947a;}
+    50% { background: #023F5B; }
+    to { background: #343D43; }
+}
+@keyframes welcome{
+    from { background: #50947a;}
+    50% { background: #023F5B; }
+    to { background: #343D43; }
+}
+*/
