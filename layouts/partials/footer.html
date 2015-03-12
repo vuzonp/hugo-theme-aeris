@@ -13,7 +13,7 @@
                     </nav>-->
 
                     <footer id="fold" role="contentinfo">
-                        <div><a href="#top" class="back-top" title="{{title $.Site.Data.locale.ascend }}"><span class="sr-only">{{title $.Site.Data.locale.ascend }}</span>&uarr;</a></div>
+                        <div><a href="{{ .Permalink }}#top" class="back-top" title="{{title $.Site.Data.locale.ascend }}"><span class="sr-only">{{title $.Site.Data.locale.ascend }}</span>&uarr;</a></div>
                         <p id="copyright">&copy;<span itemprop="copyrightYear">{{ .Now.Format "2006" }}</span> - <span itemprop="copyrightHolder">{{ .Site.Copyright }}</span></p>
                         <p><small>{{title $.Site.Data.locale.template }} <a href="https://github.com/vuzonp/hugo-theme-aeris">æris</a> {{ $.Site.Data.locale.createdBy }} <a href="http://www.thomasgirard.fr">Thomas Girard</a>, {{ $.Site.Data.locale.using }} <a href="http://gohugo.io">Hugo</a>.</small>
                         </p>
