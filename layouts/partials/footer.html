@@ -28,3 +28,9 @@
     {{ if in $burl "localhost"}}<script src="http://0.0.0.0:8080/js/aeris.min.js"></script>{{ else }}
     <script src="https://vuzonp.github.io/aeris-static/dist/js/aeris.min.js"></script>{{ end }}
     <script>Æ.setup();</script>
+
+    {{ if eq .Params.colorscheme true }}
+    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css" />
+    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    {{ end }}
