@@ -15,7 +15,7 @@
 
         <!-- Structure -->
         <div id="last-updates">
-            <h2 id="headline">{{ .Title }}{{ if .Paginator.HasNext }} <var>{{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}{{ end }}</var></h2>
+            <h2 id="headline">{{ .Title }}{{ if .Paginator.HasNext }} <var>{{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}</var>{{ end }}</h2>
             {{ partial "last-updates.html" . }}
 
             {{ partial "pagination.html" . }}
