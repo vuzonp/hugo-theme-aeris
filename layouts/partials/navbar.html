@@ -77,6 +77,10 @@
 
         <!-- Structure -->
         <div id="main-wrapper">
+        <script>
+            var w = document.getElementById('main-wrapper');
+            w.classList.add('closed');
+        </script>
             <div id="row-wrapper">
                 <!-- Menu -->
                 {{ partial "main-menu.html" . }}
