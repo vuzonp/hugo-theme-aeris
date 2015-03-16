@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{lower $.Site.LanguageCode }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html lang="{{lower $.Site.LanguageCode }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" xmlns:xlink="http://www.w3.org/1999/xlink">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
         {{ if eq .Url "/" }}<title>{{title .Site.Title }}{{ if .Site.Params.subtitle }} &middot; {{title .Site.Params.subtitle }}{{ end }} | {{ $.Site.Data.locale.home }}</title>
         {{ else }}<title>{{title .Title }} | {{title .Site.Title }}</title>{{ end }}
 
-        {{ "<!--[if lt IE 9]>" | safeHtml }}<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>{{ "<![endif]-->" | safeHtml }}
+        {{ "<!--[if lt IE 9]>" | safeHtml }}<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script><script src="/theme/svg4everybody.min.js"></script>{{ "<![endif]-->" | safeHtml }}
         {{ $burl := (print .Site.BaseUrl) }}
         {{ if in $burl "localhost"}}<link rel="stylesheet" href="http://0.0.0.0:8080/css/aeris.min.css" />
         {{ else }}<link rel="stylesheet" href="https://vuzonp.github.io/aeris-static/dist/css/aeris.min.css" />{{ end }}

@@ -1,6 +1,5 @@
 {{ partial "head.html" . }}
     <body id="homepage" itemscope itemtype="http://schema.org/Blog">
-
         <!-- Navbar -->
         {{ partial "navbar.html" . }}
         {{ partial "header.html" . }}
@@ -20,11 +19,11 @@
             <!-- index pagination -->
             <nav class="pagination">
                 {{ if .Paginator.HasPrev }}<div class="inline"><a href="{{ .Paginator.Prev.Url }}" aria-label="{{ $.Site.Data.locale.newerPosts }}" title="{{ $.Site.Data.locale.newerPosts }}"><span aria-visibility="hidden">&laquo;</span></a></div>{{ end }}
-                <div class="inline"><a href="{{ .Site.BaseUrl }}" aria-label="{{ $.Site.Data.locale.backToHome }}" title="{{ $.Site.Data.locale.backToHome }}" itemprop="url">
-                    <svg  class="icon small icon-home" viewBox="0 0 100 100">
-                        <path d="M 0 100 L 0 50 L 50 0 L 100 50 L 100 100 L 65 100 L 65 70 L 40 70 L 40 100 Z" stroke="none" />
-                    </svg>
-                </a></div>
+                <div class="inline">
+                    <a href="{{ .Site.BaseUrl }}" aria-label="{{ $.Site.Data.locale.backToHome }}" title="{{ $.Site.Data.locale.backToHome }}" itemprop="url">
+                        <svg  class="icon small icon-home" viewBox="0 0 100 100"><use xlink:href="/theme/shapes.svg#icon-home" /></svg>
+                    </a>
+                </div>
                 {{ if .Paginator.HasNext }}<div class="inline"><a href="{{ .Paginator.Next.Url }}" aria-label="{{ $.Site.Data.locale.olderPosts }}" title="{{ $.Site.Data.locale.olderPosts }}"><span aria-visibility="hidden">&raquo;</span></a></div>{{ end }}
             </nav>
 
