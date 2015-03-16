@@ -21,6 +21,9 @@
                             <a href="{{ .Site.BaseUrl }}/{{ .Section }}/">&sect;&nbsp;{{ .Section }}</a>
                         &middot; le <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
                 </div>
+                <nav>
+                    {{ partial "tags.html" . }}
+                </nav>
             </header>
 
             {{ with .Params.pictures }}
