@@ -35,12 +35,12 @@
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
-            var u="{{ . | safeUrl }}";
+            var u="http://{{ . | safeUrl }}/";
             _paq.push(['setTrackerUrl', u+'piwik.php']);
             _paq.push(['setSiteId', 1]);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
             g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
         })();
     </script>
-    <noscript><img src="{{ . | safeUrl }}/piwik.php?idsite=1" width="1" height="1" alt="statistic tool" /></noscript>
+    <noscript><img src="http://{{ . | safeUrl }}/piwik.php?idsite=1" width="1" height="1" alt="statistic tool" /></noscript>
     {{ end }}
