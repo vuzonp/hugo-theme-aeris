@@ -48,7 +48,7 @@
             <div class="inline"><a href="{{ .PrevInSection.Permalink }}" title="Précédent : {{ .PrevInSection.LinkTitle }}"><span aria-hidden="true" aria-label="Article Précédent">&laquo;</span></a></div>
             {{ end }}
             <div class="inline">
-                <a href="{{ .Site.BaseUrl }}{{ .Section }}/" title="Catégorie : {{ .Section }}"><span aria-hidden="true" aria-label="Remonter dans la catégorie parent">&sect;</span></a>
+                <a href="{{ .Site.BaseUrl }}/{{ .Section }}/" title="Catégorie : {{ .Section }}"><span aria-hidden="true" aria-label="Remonter dans la catégorie parent">&sect;</span></a>
             </div>
             {{ if .NextInSection }}
             <div class="inline"><a href="{{ .NextInSection.Permalink }}" title="Suivant : {{ .NextInSection.LinkTitle }}"><span aria-hidden="true" aria-label="Article Suivant">&raquo;</span></a></div>

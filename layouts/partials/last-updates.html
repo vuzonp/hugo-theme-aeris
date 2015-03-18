@@ -9,11 +9,12 @@
                     </h3>
                     <div class="meta">{{ $.Site.Data.locale.published }} <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ .Date.Format $.Site.Data.locale.dateFormat }}</time> &middot;
                     <small>{{ .Date.Format $.Site.Data.locale.readingTime }}: <em>{{ .ReadingTime }}&nbsp;minute{{ if gt .ReadingTime 1 }}s{{ end }}</em></small></div>
+                    {{ partial "tags.html" . }}
                 </div>
             </header>
             <div class="summary" itemprop="description">
                 <p>{{ .Summary }}</p>
-                {{ if .Truncated }}<div class="read-more"><a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}"><span class="sr-only">{{ .Date.Format $.Site.Data.locale.readmore }} </span>&rarr;</a></div>{{ end }}
+                {{ if .Truncated }}<div class="read-more"><a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}"><span class="sr-only">{{ .Date.Format $.Site.Data.locale.readmore }}</span>&rarr;</a></div>{{ end }}
             </div>
 
         </article>

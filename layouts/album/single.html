@@ -1,5 +1,5 @@
 {{ partial "head.html" . }}
-    <body id="singlepage" class="pictorial" role="document" itemscope itemtype="http://schema.org/BlogPosting">
+    <body id="singlepage" role="document" itemscope itemtype="http://schema.org/BlogPosting">
 
         <!-- Navbar -->
         {{ partial "navbar.html" . }}
@@ -13,7 +13,7 @@
         {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
         {{ if .Params.lang }}<meta itemprop="inLanguage" content="{{ .Params.lang }}" />{{ end }}
 
-        <article class="post" role="article"{{ if .Params.lang }} lang="{{ .Params.lang }}"{{ end }}>
+        <article class="album" role="article"{{ if .Params.lang }} lang="{{ .Params.lang }}"{{ end }}>
             <header>
                 <h1 id="headline" itemprop="headline">{{ .Title }}</h1>
                 <div class="meta">
