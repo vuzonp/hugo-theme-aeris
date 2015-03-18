@@ -28,3 +28,19 @@
     {{ if in $burl "localhost"}}<script src="http://0.0.0.0:8080/js/aeris.min.js"></script>{{ else }}
     <script src="https://vuzonp.github.io/aeris-static/dist/js/aeris.min.js"></script>{{ end }}
     <script>Æ.setup();</script>
+
+    {{ with .Site.Params.piwik }}
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="{{ . | safeUrl }}";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', 1]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript><img src="{{ . | safeUrl }}/piwik.php?idsite=1" width="1" height="1" alt="statistic tool" /></noscript>
+    {{ end }}
