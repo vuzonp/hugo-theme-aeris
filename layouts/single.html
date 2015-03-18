@@ -1,0 +1,62 @@
+{{ partial "head.html" . }}
+    <body id="singlepage" class="pictorial" role="document" itemscope itemtype="http://schema.org/BlogPosting">
+
+        <!-- Navbar -->
+        {{ partial "navbar.html" . }}
+        {{ partial "header-minimal.html" . }}
+
+        <meta itemprop="url" content="{{ .Permalink }}" />
+        <meta itemprop="wordCount" content="{{ .WordCount }}" />
+        <meta itemprop="timeRequired" content="P{{ .ReadingTime }}M" />
+        {{ if .Description }}<meta itemprop="description" content="{{ .Description }}" />{{ end }}
+        {{ if .Params.author }}<meta itemprop="author" content="{{ .Params.author }}" />
+        {{ else }}<meta itemprop="author" content="{{ .Site.Params.author }}" />{{ end }}
+        {{ if .Params.lang }}<meta itemprop="inLanguage" content="{{ .Params.lang }}" />{{ end }}
+
+        <article class="post" role="article"{{ if .Params.lang }} lang="{{ .Params.lang }}"{{ end }}>
+            <header>
+                <h1 id="headline" itemprop="headline">{{ .Title }}</h1>
+                <div class="meta">
+                    Publié dans :
+                            <a href="{{ .Site.BaseUrl }}/{{ .Section }}/">&sect;&nbsp;{{ .Section }}</a>
+                        &middot; le <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+                </div>
+                <nav>
+                    {{ partial "tags.html" . }}
+                </nav>
+            </header>
+
+            {{ with .Params.pictures }}
+            <figure class="post-picture">
+                <img src="{{index . 0}}" srcset="{{ delimit . ", " }}" alt="" />
+            </figure>
+            {{ end }}
+
+            {{ if .Params.notoc }}
+            <nav id="toc">
+                {{ .TableOfContents }}
+            </nav>
+            {{ end }}
+
+            <div class="page-content" itemprop="articleBody">
+                {{ .Content }}
+            </div>
+        </article>
+
+        <nav class="pagination">
+            {{ if .PrevInSection }}
+            <div class="inline"><a href="{{ .PrevInSection.Permalink }}" title="Précédent : {{ .PrevInSection.LinkTitle }}"><span aria-hidden="true" aria-label="Article Précédent">&laquo;</span></a></div>
+            {{ end }}
+            <div class="inline">
+                <a href="{{ .Site.BaseUrl }}/{{ .Section }}/" title="Catégorie : {{ .Section }}"><span aria-hidden="true" aria-label="Remonter dans la catégorie parent">&sect;</span></a>
+            </div>
+            {{ if .NextInSection }}
+            <div class="inline"><a href="{{ .NextInSection.Permalink }}" title="Suivant : {{ .NextInSection.LinkTitle }}"><span aria-hidden="true" aria-label="Article Suivant">&raquo;</span></a></div>
+            {{ end }}
+        </nav>
+
+
+
+        {{ partial "footer.html" . }}
+    </body>
+</html>

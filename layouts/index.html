@@ -18,15 +18,33 @@
 
             <!-- index pagination -->
             <nav class="pagination">
-                {{ if .Paginator.HasPrev }}<div class="inline"><a href="{{ .Paginator.Prev.Url }}" aria-label="{{ $.Site.Data.locale.newerPosts }}" title="{{ $.Site.Data.locale.newerPosts }}"><span aria-visibility="hidden">&laquo;</span></a></div>{{ end }}
-                <div class="inline">
-                    <a href="{{ .Site.BaseUrl }}" aria-label="{{ $.Site.Data.locale.backToHome }}" title="{{ $.Site.Data.locale.backToHome }}" itemprop="url">
-                        <svg  class="icon small icon-home" viewBox="0 0 100 100"><use xlink:href="/theme/shapes.svg#icon-home" /></svg>
-                    </a>
-                </div>
-                {{ if .Paginator.HasNext }}<div class="inline"><a href="{{ .Paginator.Next.Url }}" aria-label="{{ $.Site.Data.locale.olderPosts }}" title="{{ $.Site.Data.locale.olderPosts }}"><span aria-visibility="hidden">&raquo;</span></a></div>{{ end }}
+                {{ if .Paginator.HasPrev }}<div class="inline"><a href="{{ .Paginator.Prev.Url }}#last-updates" aria-label="{{ $.Site.Data.locale.newerPosts }}" title="{{ $.Site.Data.locale.newerPosts }}"><span aria-hidden="true">&laquo;</span></a></div>{{ end }}
+                {{ if .Paginator.HasNext }}<div class="inline"><a href="{{ .Paginator.Next.Url }}#last-updates" aria-label="{{ $.Site.Data.locale.olderPosts }}" title="{{ $.Site.Data.locale.olderPosts }}"><span aria-hidden="true">&raquo;</span></a></div>{{ end }}
             </nav>
 
+        </div>
+
+        <div id="last-albums">
+            <h2 class="sr-only">Derniers albums</h2>
+            {{ range first 4 (where .Data.Pages "Section" "album") }}
+            <article class="album album-item" itemprop="blogPost" itemscope itemtype="http://schema.org/CreativeWork">
+                <figure class="album-header">
+                    <a href="{{ .Permalink }}" class="picture">
+                        {{ with .Params.pictures }}<img src="{{index . 0}}" srcset="{{ delimit . ", " }}" itemprop="image" alt="" />{{ end }}
+                    </a>
+                    <figcaption>
+                        <h3 class="post-title x-large" itemprop="name">
+                            <a href="{{ .Permalink }}" itemprop="url"{{ if .Params.lang }} hreflang="{{ .Params.lang }}"{{ end }}>{{title .Title }}{{ if .Draft }} <small class="draft">draft</small>{{ end }}</a>
+                        </h3>
+                        <p><em itemprop="description">{{ .Description }}</em></p>
+                        {{ partial "tags.html" . }}
+                    </figcaption>
+                </figure>
+            </article>
+            {{ end }}
+            <div class="pagination">
+                <div class="inline"><a href="/album/">{{ .Date.Format $.Site.Data.locale.readmore }}</a></div>
+            </div>
         </div>
 
         {{ partial "footer.html" . }}
