@@ -14,7 +14,7 @@
             </header>
             <div class="summary" itemprop="description">
                 <p>{{ .Summary }}</p>
-                {{ if .Truncated }}<div class="read-more"><a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}"><span class="sr-only">{{ .Date.Format $.Site.Data.locale.readmore }} </span>&rarr;</a></div>{{ end }}
+                {{ if .Truncated }}<div class="read-more"><a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}"><span class="sr-only">{{ .Date.Format $.Site.Data.locale.readmore }}</span>&rarr;</a></div>{{ end }}
             </div>
 
         </article>

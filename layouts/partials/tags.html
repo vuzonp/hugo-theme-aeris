@@ -1,6 +1,6 @@
 <ul class="tags inline">
     {{ range .Params.tags }}
-    <li><a href="tags/{{ . | urlize }}" rel="tag" role="img">
+    <li><a href="tags/{{ . | urlize }}" rel="tag">
         <svg viewbox="0 0 5 5" role="img" class="icon"><use xlink:href="/theme/shapes.svg#icon-tag" /></svg>
         {{title . }}
     </a> </li>

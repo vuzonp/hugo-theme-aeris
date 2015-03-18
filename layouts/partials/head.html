@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{lower $.Site.LanguageCode }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" xmlns:xlink="http://www.w3.org/1999/xlink">
+<html lang="{{lower $.Site.LanguageCode }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,4 +45,11 @@
         <meta property="og:description" content="{{ .Description }}" />
         <meta name="twitter:description" content="{{ .Description }}" />
         {{ end }}
+
+        {{ if eq .Params.colorscheme true }}
+        <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css" />
+        <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        {{ end }}
+
     </head>
