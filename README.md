@@ -2,7 +2,7 @@
 
 __Warning, this template is actually a _work in progress_. Please, do not use it in production !__
 
-Æris is a template for the __[Hugo static website engine](http://gohugo.io) originally intended to [www.thomasgirard.fr](http://www.thomasgirard.fr). This template is under MIT License.__
+Æris is a template for the __[Hugo static website engine](http://gohugo.io) originally intended to [old.thomasgirard.fr](http://old.thomasgirard.fr). This template is under MIT License.__
 
 ![æris example](./preview.png)
 
